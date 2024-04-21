@@ -1,0 +1,75 @@
+# Built application files
+*/[Bb]in/
+*/[Oo]bj/
+
+src/*/[Bb]in/
+src/*/[Oo]bj/
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+**/Properties/launchSettings.json
+
+# Visual Studio 2015/2017/2019/2022
+.vs/
+*.vsix
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.dbmdl
+*.jfm
+*.njsproj
+*.slnx.sqlite
+*.vsext
+# Rider
+.idea/
+*.sln.iml
+
+# User-specific files
+*.rsuser
+*.cache
+*.csproj.user
+*.vbproj.user
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Others
+.DS_Store
+*.swp
+*._*
+~$*
+*~
+*.log
+*.tmp
+*.temp
+*.tlog
+*.vscode
+.env
