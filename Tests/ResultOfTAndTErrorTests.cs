@@ -50,6 +50,24 @@ public class ResultOfTAndTErrorTests
         result.Error.Should().BeOfType<CustomError>();
         Assert.Throws<OperationFailedException>(() => result.Value);
     }
+    
+    [Fact]
+    public void automatically_cast_result_to_returned_type()
+    {
+        int value = GetSuccess(123);
+
+        value.Should().Be(123);
+    }
+
+    [Fact]
+    public void throw_when_trying_to_automatically_cast_result_of_failed_operation_to_returned_type()
+    {
+        Assert.Throws<OperationFailedException>(() =>
+        {
+            int value = GetFailure(new CustomError());
+            return value;
+        });
+    }
 
     private Result<int, CustomError> GetSuccess(int value)
     {

@@ -6,7 +6,7 @@ public class Result<T, TError>
 {
     public bool IsSuccess { get; }
     public bool IsFailure => !IsSuccess;
-    public T? Value => IsSuccess ? _value : throw new OperationFailedException();
+    public T Value => IsSuccess ? _value! : throw new OperationFailedException();
     private readonly T? _value;
     public TError? Error { get; }
 
@@ -30,5 +30,15 @@ public class Result<T, TError>
     public static implicit operator Result<T, TError>(T value)
     {
         return new Result<T, TError>(true, value);
+    }
+
+    public static implicit operator T(Result<T, TError> result)
+    {
+        if (result.IsFailure)
+        {
+            throw new OperationFailedException();
+        }
+
+        return result.Value;
     }
 }

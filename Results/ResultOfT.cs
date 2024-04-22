@@ -41,4 +41,14 @@ public class Result<T>
     {
         return new Result<T>(true, value);
     }
+    
+    public static implicit operator T(Result<T> result)
+    {
+        if (result.IsFailure)
+        {
+            throw new OperationFailedException();
+        }
+        
+        return result.Value;
+    }
 }
