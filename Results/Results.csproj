@@ -1,9 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+    <ItemGroup>
+        <None Include="../README.md" Pack="true" PackagePath=""/>
+        <None Include="../LICENSE.txt" Pack="true" PackagePath=""/>
+        <None Include="../icon.jpg" Pack="true" PackagePath=""/>
+    </ItemGroup>
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <PackageId>XResults</PackageId>
+        <Version>1.0.0</Version>
+        <Author>Yegor</Author>
+        <Authors>Yegor</Authors>
+        <Product>XResults</Product>
+        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <RepositoryUrl>https://github.com/iamyegor/XResults</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/iamyegor/XResults</PackageProjectUrl>
+        <RepositoryType>git</RepositoryType>
+        <Description>A compact results library similar to FluentResults, offering all essential features for effective error handling and response management.</Description>
+        <Copyright>Copyright © 2024 Yegor B.</Copyright>
+        <PackageTags>results;error-handling;dotnet</PackageTags>
+        <PackageIcon>icon.jpg</PackageIcon>
     </PropertyGroup>
-
 </Project>
