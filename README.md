@@ -32,10 +32,12 @@ Result DoWork()
 Result result = DoWork(); 
 
 result.IsSuccess; 
+result.IsFailure;
 result.ErrorMessage; 
 ```
 
 - `IsSuccess`: Returns `true` if the operation was successful.
+- `IsFailure` Returns `true` if the operation failed.
 - `ErrorMessage`: Provides the error message if the operation failed.
 
 ### `Result<T>`
@@ -62,11 +64,13 @@ Result<int> DoWork()
 Result<int> result = DoWork(); 
 
 result.IsSuccess; 
+result.IsFailure;
 result.Value; 
 result.ErrorMessage; 
 ```
 
 - `IsSuccess`: Indicates if the operation was successful.
+- `IsFailure`: Indicates if the operation failed.
 - `Value`: The value returned by the operation (e.g., 123).
 - `ErrorMessage`: The error message if the operation failed.
 
@@ -109,11 +113,13 @@ public class CustomError
 Result<int, CustomError> result = DoWork(); 
 
 result.IsSuccess; 
+result.IsFailure;
 result.Value; 
 result.Error; 
 ```
 
 - `IsSuccess`: Whether the operation succeeded.
+- `IsFailure`: Indicates if the operation failed.
 - `Value`: The value returned if successful.
 - `Error`: The custom error returned if the operation failed.
 
@@ -140,10 +146,12 @@ SuccessOr<CustomError> DoWork()
 SuccessOr<CustomError> result = DoWork(); 
 
 result.IsSuccess; 
+result.IsFailure;
 result.Error; 
 ```
 
 - `IsSuccess`: Indicates if the operation was successful.
+- `IsFailure`: Indicates if the operation failed.
 - `Error`: The custom error returned if the operation failed.
 
 ## License
