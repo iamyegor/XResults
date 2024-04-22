@@ -1,9 +1,11 @@
+using Results.Exceptions;
+
 namespace Results;
 
 public class Result<T, TError>
 {
     public bool IsSuccess { get; }
-    public T? Value => IsSuccess ? _value : throw new ResultException();
+    public T? Value => IsSuccess ? _value : throw new OperationFailedException();
     private readonly T? _value;
     public TError? Error { get; }
 
@@ -16,7 +18,7 @@ public class Result<T, TError>
 
     public static implicit operator Result<T, TError>(Result<T> result)
     {
-        return new Result<T, TError>(result.IsSuccess);
+        return new Result<T, TError>(true, result.Value);
     }
 
     public static implicit operator Result<T, TError>(TError error)

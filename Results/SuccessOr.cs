@@ -3,14 +3,12 @@ namespace Results;
 public class SuccessOr<TError>
 {
     public bool IsSuccess { get; }
-    public TError? Error =>
-        !IsSuccess ? _error : throw new Exception("Can't get error from successfull operation");
-    private readonly TError? _error;
+    public TError? Error { get; }
 
     private SuccessOr(bool isSuccess, TError? error)
     {
         IsSuccess = isSuccess;
-        _error = error;
+        Error = error;
     }
 
     public static implicit operator SuccessOr<TError>(Result result)
