@@ -18,6 +18,7 @@ public class ResultOfTTests
         Result<int> result = GetSuccess(123);
 
         result.IsSuccess.Should().Be(true);
+        result.IsFailure.Should().Be(false);
         result.Value.Should().Be(123);
         result.ErrorMessage.Should().Be(null);
     }
@@ -28,6 +29,7 @@ public class ResultOfTTests
         Result<int> result = GetFailure("error");
 
         result.IsSuccess.Should().Be(false);
+        result.IsFailure.Should().Be(true);
         result.ErrorMessage.Should().Be("error");
         Assert.Throws<OperationFailedException>(() => result.Value);
     }
@@ -38,6 +40,7 @@ public class ResultOfTTests
         Result<int> result = GetResultWithoutCallingResultOk(123);
 
         result.IsSuccess.Should().Be(true);
+        result.IsFailure.Should().Be(false);
         result.Value.Should().Be(123);
         result.ErrorMessage.Should().Be(null);
     }

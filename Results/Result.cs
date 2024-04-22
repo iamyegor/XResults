@@ -3,6 +3,7 @@ namespace Results;
 public class Result
 {
     public bool IsSuccess { get; }
+    public bool IsFailure => !IsSuccess;
     public string? ErrorMessage { get; }
 
     private Result(bool isSuccess, string? errorMessage = null)

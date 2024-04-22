@@ -11,6 +11,7 @@ public class ResultTests
         Result result = GetSuccess();
 
         result.IsSuccess.Should().Be(true);
+        result.IsFailure.Should().Be(false);
         result.ErrorMessage.Should().Be(null);
     }
 
@@ -20,6 +21,7 @@ public class ResultTests
         Result result = GetFailure("error");
 
         result.IsSuccess.Should().Be(false);
+        result.IsFailure.Should().Be(true);
         result.ErrorMessage.Should().Be("error");
     }
 

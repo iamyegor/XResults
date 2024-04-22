@@ -13,6 +13,7 @@ public class ResultOfTAndTErrorTests
         Result<int, CustomError> result = GetSuccess(123);
 
         result.IsSuccess.Should().Be(true);
+        result.IsFailure.Should().Be(false);
         result.Error.Should().Be(null);
         result.Value.Should().Be(123);
     }
@@ -23,6 +24,7 @@ public class ResultOfTAndTErrorTests
         Result<int, CustomError> result = GetFailure(new CustomError());
 
         result.IsSuccess.Should().Be(false);
+        result.IsFailure.Should().Be(true);
         result.Error.Should().BeOfType<CustomError>();
         Assert.Throws<OperationFailedException>(() => result.Value);
     }
@@ -33,6 +35,7 @@ public class ResultOfTAndTErrorTests
         Result<int, CustomError> result = GetSuccessWithoutCallingResultOk(123);
 
         result.IsSuccess.Should().Be(true);
+        result.IsFailure.Should().Be(false);
         result.Value.Should().Be(123);
         result.Error.Should().Be(null);
     }
@@ -43,6 +46,7 @@ public class ResultOfTAndTErrorTests
         Result<int, CustomError> result = GetFailureWithoutCallingResultFail();
 
         result.IsSuccess.Should().Be(false);
+        result.IsFailure.Should().Be(true);
         result.Error.Should().BeOfType<CustomError>();
         Assert.Throws<OperationFailedException>(() => result.Value);
     }

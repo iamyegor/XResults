@@ -5,6 +5,7 @@ namespace Results;
 public class Result<T, TError>
 {
     public bool IsSuccess { get; }
+    public bool IsFailure => !IsSuccess;
     public T? Value => IsSuccess ? _value : throw new OperationFailedException();
     private readonly T? _value;
     public TError? Error { get; }

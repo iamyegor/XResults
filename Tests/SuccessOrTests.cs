@@ -12,6 +12,7 @@ public class SuccessOrTests
         SuccessOr<CustomError> result = GetSuccess();
 
         result.IsSuccess.Should().Be(true);
+        result.IsFailure.Should().Be(false);
         result.Error.Should().Be(null);
     }
 
@@ -21,6 +22,7 @@ public class SuccessOrTests
         SuccessOr<CustomError> result = GetFailure();
 
         result.IsSuccess.Should().Be(false);
+        result.IsFailure.Should().Be(true);
         result.Error.Should().BeOfType<CustomError>();
     }
 
@@ -30,6 +32,7 @@ public class SuccessOrTests
         SuccessOr<CustomError> result = GetFailureWhenReturningMessage("error");
 
         result.IsSuccess.Should().Be(false);
+        result.IsFailure.Should().Be(true);
         result.Error.Should().Be(null);
     }
 
@@ -39,6 +42,7 @@ public class SuccessOrTests
         SuccessOr<CustomError> result = GetFailureWithoutCallingResultsFail();
 
         result.IsSuccess.Should().Be(false);
+        result.IsFailure.Should().Be(true);
         result.Error.Should().BeOfType<CustomError>();
     }
 

@@ -5,6 +5,7 @@ namespace Results;
 public class Result<T>
 {
     public bool IsSuccess { get; }
+    public bool IsFailure => !IsSuccess;
     public string? ErrorMessage { get; }
     public T Value => IsSuccess ? _value! : throw new OperationFailedException();
     private readonly T? _value;

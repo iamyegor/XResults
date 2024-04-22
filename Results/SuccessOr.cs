@@ -3,6 +3,7 @@ namespace Results;
 public class SuccessOr<TError>
 {
     public bool IsSuccess { get; }
+    public bool IsFailure => !IsSuccess;
     public TError? Error { get; }
 
     private SuccessOr(bool isSuccess, TError? error)
