@@ -6,7 +6,7 @@ public class Result
     public bool IsFailure => !IsSuccess;
     public string? ErrorMessage { get; }
 
-    private Result(bool isSuccess, string? errorMessage = null)
+    internal Result(bool isSuccess, string? errorMessage = null)
     {
         IsSuccess = isSuccess;
         ErrorMessage = errorMessage;

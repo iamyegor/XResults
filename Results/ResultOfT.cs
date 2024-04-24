@@ -37,18 +37,23 @@ public class Result<T>
         return Fail(result.ErrorMessage);
     }
 
+    public static implicit operator Result(Result<T> result)
+    {
+        return new Result(result.IsSuccess, result.ErrorMessage);
+    }
+
     public static implicit operator Result<T>(T value)
     {
         return new Result<T>(true, value);
     }
-    
+
     public static implicit operator T(Result<T> result)
     {
         if (result.IsFailure)
         {
             throw new OperationFailedException();
         }
-        
+
         return result.Value;
     }
 }
