@@ -22,11 +22,6 @@ public class Result<T>
         return new Result<T>(true, value);
     }
 
-    private static Result<T> Fail(string? errorMessage)
-    {
-        return new Result<T>(false, default, errorMessage);
-    }
-
     public static implicit operator Result<T>(Result result)
     {
         if (result.IsSuccess)
@@ -35,7 +30,7 @@ public class Result<T>
         }
         else
         {
-            return Fail(result.ErrorMessage);
+            return new Result<T>(false, default, result.ErrorMessage);
         }
     }
 
