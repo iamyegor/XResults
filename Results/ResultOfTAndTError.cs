@@ -19,7 +19,16 @@ public class Result<T, TError>
 
     public static implicit operator Result<T, TError>(Result<T> result)
     {
-        return new Result<T, TError>(true, result.Value);
+        if (result.IsSuccess)
+        {
+            return new Result<T, TError>(result.IsSuccess, result.Value);
+        }
+        else
+        {
+            throw new ResultCastException(
+                "You can't cast Result<T> to Result<T, TError> when Result<T> is failure"
+            );
+        }
     }
 
     public static implicit operator Result<T, TError>(TError error)

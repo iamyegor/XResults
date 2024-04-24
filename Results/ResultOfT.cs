@@ -26,7 +26,9 @@ public class Result<T>
     {
         if (result.IsSuccess)
         {
-            throw new ResultCastException();
+            throw new ResultCastException(
+                "You can't cast Result to Result<T> when Result is success"
+            );
         }
         else
         {
