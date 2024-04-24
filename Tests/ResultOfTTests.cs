@@ -9,7 +9,7 @@ public class ResultOfTTests
     [Fact]
     public void empty_ok_results_in_empty_ok_exception()
     {
-        Assert.Throws<EmptyOkException>(GetResultWithEmptyOk);
+        Assert.Throws<ResultCastException>(GetResultWithEmptyOk);
     }
 
     [Fact]

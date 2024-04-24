@@ -31,10 +31,12 @@ public class Result<T>
     {
         if (result.IsSuccess)
         {
-            throw new EmptyOkException();
+            throw new ResultCastException();
         }
-
-        return Fail(result.ErrorMessage);
+        else
+        {
+            return Fail(result.ErrorMessage);
+        }
     }
 
     public static implicit operator Result(Result<T> result)
