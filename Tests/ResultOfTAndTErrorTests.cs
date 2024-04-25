@@ -10,7 +10,7 @@ public class ResultOfTAndTErrorTests
     [Fact]
     public void result_succeeds()
     {
-        Result<int, CustomError> result = GetSuccess(123);
+        Result<int, CustomError> result = Result.Ok(123);
 
         result.IsSuccess.Should().Be(true);
         result.IsFailure.Should().Be(false);
@@ -21,7 +21,7 @@ public class ResultOfTAndTErrorTests
     [Fact]
     public void result_fails()
     {
-        Result<int, CustomError> result = GetFailure(new CustomError());
+        Result<int, CustomError> result = Result.Fail(new CustomError());
 
         result.IsSuccess.Should().Be(false);
         result.IsFailure.Should().Be(true);
@@ -30,9 +30,9 @@ public class ResultOfTAndTErrorTests
     }
 
     [Fact]
-    public void result_succeeds_when_only_returning_the_value()
+    public void automatically_convertes_returned_type()
     {
-        Result<int, CustomError> result = GetSuccessWithoutCallingResultOk(123);
+        Result<int, CustomError> result = 123;
 
         result.IsSuccess.Should().Be(true);
         result.IsFailure.Should().Be(false);
@@ -43,18 +43,18 @@ public class ResultOfTAndTErrorTests
     [Fact]
     public void result_fails_when_only_returning_the_error()
     {
-        Result<int, CustomError> result = GetFailureWithoutCallingResultFail();
+        Result<int, CustomError> result = new CustomError();
 
         result.IsSuccess.Should().Be(false);
         result.IsFailure.Should().Be(true);
         result.Error.Should().BeOfType<CustomError>();
         Assert.Throws<OperationFailedException>(() => result.Value);
     }
-    
+
     [Fact]
     public void automatically_cast_result_to_returned_type()
     {
-        int value = GetSuccess(123);
+        int value = Result.Ok(123);
 
         value.Should().Be(123);
     }
@@ -64,28 +64,9 @@ public class ResultOfTAndTErrorTests
     {
         Assert.Throws<OperationFailedException>(() =>
         {
-            int value = GetFailure(new CustomError());
-            return value;
+            Result<int, CustomError> resultOfIntAndCustomError = Result.Fail(new CustomError());
+            int integer = resultOfIntAndCustomError;
+            return integer;
         });
-    }
-
-    private Result<int, CustomError> GetSuccess(int value)
-    {
-        return Result.Ok(value);
-    }
-
-    private Result<int, CustomError> GetFailure(CustomError error)
-    {
-        return Result.Fail(error);
-    }
-
-    private Result<int, CustomError> GetSuccessWithoutCallingResultOk(int value)
-    {
-        return value;
-    }
-
-    private Result<int, CustomError> GetFailureWithoutCallingResultFail()
-    {
-        return new CustomError();
     }
 }
