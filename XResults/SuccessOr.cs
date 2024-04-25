@@ -4,12 +4,12 @@ public class SuccessOr<TError>
 {
     public bool IsSuccess { get; }
     public bool IsFailure => !IsSuccess;
-    public TError? Error { get; }
+    public TError Error { get; }
 
     private SuccessOr(bool isSuccess, TError? error)
     {
         IsSuccess = isSuccess;
-        Error = error;
+        Error = error!;
     }
 
     public static implicit operator SuccessOr<TError>(Result result)

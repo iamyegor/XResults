@@ -6,15 +6,15 @@ public class Result<T, TError>
 {
     public bool IsSuccess { get; }
     public bool IsFailure => !IsSuccess;
-    public T Value => IsSuccess ? _value! : throw new OperationFailedException();
-    private readonly T? _value;
-    public TError? Error { get; }
+    public T Value => IsSuccess ? _value : throw new OperationFailedException();
+    private readonly T _value;
+    public TError Error { get; }
 
     private Result(bool isSuccess, T? value = default, TError? error = default)
     {
         IsSuccess = isSuccess;
-        _value = value;
-        Error = error;
+        _value = value!;
+        Error = error!;
     }
 
     public static Result<T, TError> Create(

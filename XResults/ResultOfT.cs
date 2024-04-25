@@ -7,13 +7,13 @@ public class Result<T>
     public bool IsSuccess { get; }
     public bool IsFailure => !IsSuccess;
     public string? ErrorMessage { get; }
-    public T Value => IsSuccess ? _value! : throw new OperationFailedException();
-    private readonly T? _value;
+    public T Value => IsSuccess ? _value : throw new OperationFailedException();
+    private readonly T _value;
 
     private Result(bool isSuccess, T? value = default, string? errorMessage = null)
     {
         IsSuccess = isSuccess;
-        _value = value;
+        _value = value!;
         ErrorMessage = errorMessage;
     }
 
