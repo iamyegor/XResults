@@ -1,7 +1,7 @@
 using FluentAssertions;
-using Results;
-using Results.Exceptions;
 using Tests.Fixtures;
+using XResults;
+using XResults.Exceptions;
 
 namespace Tests;
 

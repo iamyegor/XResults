@@ -1,6 +1,6 @@
 using FluentAssertions;
-using Results;
 using Tests.Fixtures;
+using XResults;
 
 namespace Tests;
 

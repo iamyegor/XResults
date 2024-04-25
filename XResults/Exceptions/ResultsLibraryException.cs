@@ -1,4 +1,4 @@
-namespace Results.Exceptions;
+namespace XResults.Exceptions;
 
 public abstract class ResultsLibraryException : Exception
 {

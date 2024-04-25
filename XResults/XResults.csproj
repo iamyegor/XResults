@@ -23,5 +23,6 @@
         <Copyright>Copyright © 2024 Yegor B.</Copyright>
         <PackageTags>results;error-handling;dotnet</PackageTags>
         <PackageIcon>icon.jpg</PackageIcon>
+        <RootNamespace>XResults</RootNamespace>
     </PropertyGroup>
 </Project>

@@ -1,6 +1,6 @@
-﻿using Results.Exceptions;
+﻿using XResults.Exceptions;
 
-namespace Results;
+namespace XResults;
 
 public class Result<T>
 {

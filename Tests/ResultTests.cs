@@ -1,5 +1,5 @@
 using FluentAssertions;
-using Results;
+using XResults;
 
 namespace Tests;
 

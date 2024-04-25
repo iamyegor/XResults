@@ -1,6 +1,6 @@
 using FluentAssertions;
-using Results;
-using Results.Exceptions;
+using XResults;
+using XResults.Exceptions;
 
 namespace Tests;
 

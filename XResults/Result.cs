@@ -1,4 +1,4 @@
-namespace Results;
+namespace XResults;
 
 public class Result
 {

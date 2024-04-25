@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Results", "Results\Results.csproj", "{3EF2E174-E41F-4B05-B11C-C79025D31DC3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XResults", "XResults\XResults.csproj", "{3EF2E174-E41F-4B05-B11C-C79025D31DC3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{048445B1-C81C-45D4-979A-CAF67035C406}"
 EndProject
