@@ -17,6 +17,26 @@ public class Result<T, TError>
         Error = error;
     }
 
+    public static Result<T, TError> Create(
+        bool isSuccess,
+        T? value = default,
+        TError? error = default
+    )
+    {
+        if (isSuccess && error != null)
+        {
+            throw new Exception("Can't create a successful result with error message");
+        }
+
+        bool isDefaultValue = EqualityComparer<T>.Default.Equals(value, default);
+        if (!isSuccess && !isDefaultValue)
+        {
+            throw new Exception("Can't create an unsuccessful result with value");
+        }
+
+        return new Result<T, TError>(isSuccess, value, error);
+    }
+
     public static implicit operator Result<T, TError>(Result<T> result)
     {
         if (result.IsSuccess)

@@ -69,4 +69,44 @@ public class ResultOfTAndTErrorTests
             return integer;
         });
     }
+
+    [Fact]
+    public void create_successful_result()
+    {
+        Result<int, CustomError> result = Result<int, CustomError>.Create(true, 123);
+
+        result.IsSuccess.Should().Be(true);
+        result.IsFailure.Should().Be(false);
+        result.Value.Should().Be(123);
+        result.Error.Should().Be(null);
+    }
+
+    [Fact]
+    public void create_failed_result()
+    {
+        Result<int, CustomError> result = Result<int, CustomError>.Create(
+            false,
+            0,
+            new CustomError()
+        );
+
+        result.IsSuccess.Should().Be(false);
+        result.IsFailure.Should().Be(true);
+        Assert.Throws<OperationFailedException>(() => result.Value);
+        result.Error.Should().BeOfType<CustomError>();
+    }
+
+    [Fact]
+    public void throw_when_creating_successful_result_with_error()
+    {
+        Assert.Throws<Exception>(() => Result<int, CustomError>.Create(true, 0, new CustomError()));
+    }
+
+    [Fact]
+    public void throw_when_creating_failed_result_with_value()
+    {
+        Assert.Throws<Exception>(
+            () => Result<int, CustomError>.Create(false, 123, new CustomError())
+        );
+    }
 }

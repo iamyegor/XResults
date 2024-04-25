@@ -67,4 +67,38 @@ public class ResultOfTTests
             return integer;
         });
     }
+
+    [Fact]
+    public void create_successful_result()
+    {
+        Result<int> result = Result<int>.Create(true, 123);
+
+        result.IsSuccess.Should().Be(true);
+        result.IsFailure.Should().Be(false);
+        result.Value.Should().Be(123);
+        result.ErrorMessage.Should().Be(null);
+    }
+
+    [Fact]
+    public void create_failed_result()
+    {
+        Result<int> result = Result<int>.Create(false, 0, "error");
+
+        result.IsSuccess.Should().Be(false);
+        result.IsFailure.Should().Be(true);
+        Assert.Throws<OperationFailedException>(() => result.Value);
+        result.ErrorMessage.Should().Be("error");
+    }
+
+    [Fact]
+    public void throw_when_creating_successful_result_with_error_message()
+    {
+        Assert.Throws<Exception>(() => Result<int>.Create(true, 0, "error"));
+    }
+    
+    [Fact]
+    public void throw_when_creating_failed_result_with_value()
+    {
+        Assert.Throws<Exception>(() => Result<int>.Create(false, 123, "error"));
+    }
 }

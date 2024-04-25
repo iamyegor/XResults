@@ -17,6 +17,22 @@ public class Result<T>
         ErrorMessage = errorMessage;
     }
 
+    public static Result<T> Create(bool isSuccess, T? value = default, string? errorMessage = null)
+    {
+        if (isSuccess && errorMessage != null)
+        {
+            throw new Exception("Can't create a successful result with error message");
+        }
+
+        bool isDefaultValue = EqualityComparer<T>.Default.Equals(value, default);
+        if (!isSuccess && !isDefaultValue)
+        {
+            throw new Exception("Can't create an unsuccessful result with value");
+        }
+
+        return new Result<T>(isSuccess, value, errorMessage);
+    }
+
     internal static Result<T> Ok(T value)
     {
         return new Result<T>(true, value);
