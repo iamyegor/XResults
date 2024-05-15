@@ -18,7 +18,7 @@ Result DoWork()
 {  
     if (isOperationSuccessful) 
     {        
-	    return Result.Ok();  
+        return Result.Ok();  
     }    
     else  
     {  
@@ -50,7 +50,7 @@ Result<int> DoWork()
     int valueToReturn = 123;
     if (isOperationSuccessful)  
     {        
-	    return Result.Ok(valueToReturn);  
+        return Result.Ok(valueToReturn);  
     }    
     else  
     {  
@@ -84,11 +84,11 @@ Result<int, CustomError> DoWork()
     int valueToReturn = 123;  
     if (isOperationSuccessful)  
     {        
-	    return Result.Ok(valueToReturn);  
+        return Result.Ok(valueToReturn);  
     }    
     else  
     {  
-		return Result.Fail(new CustomError(666, "Error message")); 
+        return Result.Fail(new CustomError(666, "Error message")); 
     }
 }
 ```
@@ -132,7 +132,7 @@ SuccessOr<CustomError> DoWork()
 {  
     if (isOperationSuccessful)  
     {        
-	    return Result.Ok();  
+        return Result.Ok();  
     }    
     else  
     {  
