@@ -1,7 +1,8 @@
-namespace XResults.Exceptions;
-
-public class ResultCastException : ResultsLibraryException
+namespace XResults.Exceptions
 {
-    public ResultCastException(string meesage)
-        : base(meesage) { }
+    public class ResultCastException : ResultsLibraryException
+    {
+        public ResultCastException(string meesage)
+            : base(meesage) { }
+    }
 }

@@ -1,7 +1,8 @@
-namespace XResults.Exceptions;
-
-public class OperationFailedException : ResultsLibraryException
+namespace XResults.Exceptions
 {
-    public OperationFailedException()
-        : base("Can't get a value of the failed operation") { }
+    public class OperationFailedException : ResultsLibraryException
+    {
+        public OperationFailedException()
+            : base("Can't get a value of the failed operation") { }
+    }
 }

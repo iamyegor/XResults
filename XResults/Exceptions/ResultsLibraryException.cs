@@ -1,7 +1,10 @@
-namespace XResults.Exceptions;
+using System;
 
-public abstract class ResultsLibraryException : Exception
+namespace XResults.Exceptions
 {
-    protected ResultsLibraryException(string errorMessage)
-        : base(errorMessage) { }
+    public abstract class ResultsLibraryException : Exception
+    {
+        protected ResultsLibraryException(string errorMessage)
+            : base(errorMessage) { }
+    }
 }

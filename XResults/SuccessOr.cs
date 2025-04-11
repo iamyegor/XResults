@@ -1,24 +1,25 @@
-namespace XResults;
-
-public class SuccessOr<TError>
+namespace XResults
 {
-    public bool IsSuccess { get; }
-    public bool IsFailure => !IsSuccess;
-    public TError Error { get; }
-
-    private SuccessOr(bool isSuccess, TError? error)
+    public class SuccessOr<TError>
     {
-        IsSuccess = isSuccess;
-        Error = error!;
-    }
+        public bool IsSuccess { get; }
+        public bool IsFailure => !IsSuccess;
+        public TError Error { get; }
 
-    public static implicit operator SuccessOr<TError>(Result result)
-    {
-        return new SuccessOr<TError>(result.IsSuccess, default);
-    }
+        private SuccessOr(bool isSuccess, TError? error)
+        {
+            IsSuccess = isSuccess;
+            Error = error!;
+        }
 
-    public static implicit operator SuccessOr<TError>(TError result)
-    {
-        return new SuccessOr<TError>(false, result);
+        public static implicit operator SuccessOr<TError>(Result result)
+        {
+            return new SuccessOr<TError>(result.IsSuccess, default);
+        }
+
+        public static implicit operator SuccessOr<TError>(TError result)
+        {
+            return new SuccessOr<TError>(false, result);
+        }
     }
 }

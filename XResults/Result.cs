@@ -1,49 +1,52 @@
-namespace XResults;
+using System;
 
-public class Result
+namespace XResults
 {
-    public bool IsSuccess { get; }
-    public bool IsFailure => !IsSuccess;
-    public string? ErrorMessage { get; }
-
-    internal Result(bool isSuccess, string? errorMessage = null)
+    public class Result
     {
-        IsSuccess = isSuccess;
-        ErrorMessage = errorMessage;
-    }
+        public bool IsSuccess { get; }
+        public bool IsFailure => !IsSuccess;
+        public string? ErrorMessage { get; }
 
-    public static Result Create(bool isSuccess, string? errorMessage = null)
-    {
-        if (isSuccess && errorMessage != null)
+        internal Result(bool isSuccess, string? errorMessage = null)
         {
-            throw new Exception("Can't create a successful result with error message");
+            IsSuccess = isSuccess;
+            ErrorMessage = errorMessage;
         }
 
-        return new Result(isSuccess, errorMessage);
-    }
+        public static Result Create(bool isSuccess, string? errorMessage = null)
+        {
+            if (isSuccess && errorMessage != null)
+            {
+                throw new Exception("Can't create a successful result with error message");
+            }
 
-    public static Result Ok()
-    {
-        return new Result(true);
-    }
+            return new Result(isSuccess, errorMessage);
+        }
 
-    public static Result<T> Ok<T>(T value)
-    {
-        return Result<T>.Ok(value);
-    }
+        public static Result Ok()
+        {
+            return new Result(true);
+        }
 
-    public static Result Fail(string? errorMessage)
-    {
-        return new Result(false, errorMessage);
-    }
+        public static Result<T> Ok<T>(T value)
+        {
+            return Result<T>.Ok(value);
+        }
 
-    public static Result Fail()
-    {
-        return new Result(false, null);
-    }
+        public static Result Fail(string? errorMessage)
+        {
+            return new Result(false, errorMessage);
+        }
 
-    public static TError Fail<TError>(TError failure)
-    {
-        return failure;
+        public static Result Fail()
+        {
+            return new Result(false, null);
+        }
+
+        public static TError Fail<TError>(TError failure)
+        {
+            return failure;
+        }
     }
 }
