@@ -37,6 +37,11 @@ public class Result
         return new Result(false, errorMessage);
     }
 
+    public static Result Fail()
+    {
+        return new Result(false, null);
+    }
+
     public static TError Fail<TError>(TError failure)
     {
         return failure;
