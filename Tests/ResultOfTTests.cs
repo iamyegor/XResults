@@ -50,25 +50,6 @@ public class ResultOfTTests
     }
 
     [Fact]
-    public void automatically_cast_result_to_returned_type()
-    {
-        int value = Result.Ok(123);
-
-        value.Should().Be(123);
-    }
-
-    [Fact]
-    public void throw_when_casting_result_of_failed_operation_to_returned_type()
-    {
-        Assert.Throws<OperationFailedException>(() =>
-        {
-            Result<int> resultOfInt = Result.Fail("error");
-            int integer = resultOfInt;
-            return integer;
-        });
-    }
-
-    [Fact]
     public void create_successful_result()
     {
         Result<int> result = Result<int>.Create(true, 123);

@@ -63,15 +63,5 @@ namespace XResults
         {
             return new Result<T, TError>(true, value);
         }
-
-        public static implicit operator T(Result<T, TError> result)
-        {
-            if (result.IsFailure)
-            {
-                throw new OperationFailedException();
-            }
-
-            return result.Value;
-        }
     }
 }

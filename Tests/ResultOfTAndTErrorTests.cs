@@ -52,25 +52,6 @@ public class ResultOfTAndTErrorTests
     }
 
     [Fact]
-    public void automatically_cast_result_to_returned_type()
-    {
-        int value = Result.Ok(123);
-
-        value.Should().Be(123);
-    }
-
-    [Fact]
-    public void throw_when_trying_to_automatically_cast_result_of_failed_operation_to_returned_type()
-    {
-        Assert.Throws<OperationFailedException>(() =>
-        {
-            Result<int, CustomError> resultOfIntAndCustomError = Result.Fail(new CustomError());
-            int integer = resultOfIntAndCustomError;
-            return integer;
-        });
-    }
-
-    [Fact]
     public void create_successful_result()
     {
         Result<int, CustomError> result = Result<int, CustomError>.Create(true, 123);
